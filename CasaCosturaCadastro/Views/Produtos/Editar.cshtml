@@ -1,0 +1,45 @@
+@model Produto
+@{
+    ViewData["Title"] = "Edição Produto";
+}
+
+<div class="row">    
+    <div class="col p-5 justify-content-center">
+        <h1 class="text-center my-2" style="color: #f06eaa"><b>EDIÇÃO DE PRODDUTO</b></h1>
+        <div class="row justify-content-md-center text-secondary pt-5 pb-3">
+            <form asp-action="Editar" method="POST" class="col-md-4">  
+                <input type="hidden" asp-for="Id" />
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="Nome">Nome do Produto: </label>
+                        <input asp-for="Nome" class="form-control"/>
+                    </div>                       
+                    <div class="form-group">                
+                        <label asp-for="Categoria">Categoria: </label>
+                        <select asp-for="Categoria" class="form-control">
+                            <option value="@Produto.AVIAMENTO">Aviamento</option>
+                            <option value="@Produto.TECIDO">Tecido</option>
+                        </select>
+                    </div>               
+                    <div class="form-group">                    
+                        <label asp-for="Descricao">Descrição: </label>
+                        <input asp-for="Descricao" class="form-control"/>
+                    </div>
+                    <div class="form-group">                    
+                        <label asp-for="Tamanho">Tamanho: </label>
+                        <input asp-for="Tamanho" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Valor">Valor (R$): </label>
+                        <input asp-for="Valor" class="form-control"/>
+                    </div>           
+                    <div class="form-group">
+                        <label asp-for="Quantidade">Quantidade: </label>
+                        <input asp-for="Quantidade" class="form-control"/>
+                    </div>
+                </fieldset>
+                <input type="submit" value="Salvar" class="btn btn-light text-white my-2" style="background-color: #f06eaa;"/>
+            </form>
+        </div>
+    </div>
+</div>

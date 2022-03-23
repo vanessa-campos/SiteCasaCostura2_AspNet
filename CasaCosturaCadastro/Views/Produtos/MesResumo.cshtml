@@ -1,0 +1,46 @@
+@model ICollection<MesResumo>
+@{
+    ViewData["Title"] = "Resumo por mês";
+}
+
+<div class="row">    
+    <div class="col pt-2 mx-3 justify-content-center">
+        <h1 class="text-center my-5" style="color: #f06eaa"><b>RESUMO DE PRODUTOS VENDIDOS POR MÊS</b></h1>         
+    @if(Model.Count > 0){       
+    <div class="row justify-content-md-center text-secondary">
+        <div class="table-responsive-sm col-md-5 col-sm-3 px-5">    
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="col-2">Id</th>
+                            <th class="col-2">Mês
+                            <th class="col-3">Qt</th>
+                            <th class="col-3">Valor (R$)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (MesResumo mr in Model){
+                            <tr>
+                                <td class="col-2">@mr.Id</td>
+                                <td class="col-2">@mr.Mes</td>
+                                <td class="col-3">@mr.Quantidade</td>
+                                <td class="col-3">@mr.Valor</td>
+                            </tr>   
+                        }  
+                    </tbody>   
+                </table>      
+        </div>
+    </div>      
+    }else{    
+        <p class="text-dark px-5">Nenhum produto vendido!</p>
+    } 
+    </div>
+</div>
+
+<div class="row">
+    <ul class="pagination col-12 justify-content-center " style="margin:20px 0">
+        @for (int i = 1; i <= (int)ViewData["Pages"]; i++){
+            <li class="page-item"><a class="page-link btn btn-light text-white m-2" href="/Produtos/MesResumo/?p=@i" style="background-color: #f06eaa;">@i</a></li>
+        }
+    </ul>
+</div>

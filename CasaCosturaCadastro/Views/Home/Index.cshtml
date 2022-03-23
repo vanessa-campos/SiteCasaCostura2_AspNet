@@ -1,0 +1,100 @@
+﻿@model ProdutoViewModel
+@{
+    ViewData["Title"] = "Página Inicial";
+}
+
+<main class="row p-5 justify-content-center">    
+    <div class="col-md-11 justify-content-center">
+    <div class="jumbotron bg-light d-flex flex-wrap justify-content-center py-2">
+        <div class="col-md-3">
+            <h1 class="text-center my-4" style="color: #f06eaa"><b>VENDA</b></h1>
+            <form asp-action="Vender" method="POST">
+                <div class="form-group">
+                    <label name="id" class="text-secondary">Aviamento: </label>
+                    <select name="id" class="form-control">
+                        <option>-</option>
+                        @foreach(Produto p in Model.Produtos){                            
+                            if(p.Quantidade > 0 && p.Categoria == 0){
+                                <option value="@p.Id">@p.Nome - @p.Descricao - @p.Tamanho</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label name="id" class="text-secondary">Tecido: </label>
+                    <select name="id" class="form-control">
+                        <option>-</option>
+                        @foreach(Produto p in Model.Produtos){
+                            if(p.Quantidade > 0 && p.Categoria == 1){
+                                <option value="@p.Id">@p.Nome - @p.Descricao - @p.Tamanho</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="number" class="form-control" name="qt" placeholder="Quantidade" required/>
+                </div>
+                <input type="submit" class="btn btn-light text-white" style="background-color: #f06eaa;" value="Enviar" />
+            </form>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+            <h1 class="text-center my-4" style="color: #f06eaa"><b>COSTURA</b></h1>
+            <form asp-action="Costurar" method="POST">
+                <div class="form-group">
+                    <input type="text" placeholder="Resumo" class="form-control mt-4" name="Resumo" required/>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Nome do Cliente" class="form-control" name="Cliente" required/>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Telefone" class="form-control" name="Telefone"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Descrição" class="form-control" name="Descricao"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Valor" class="form-control" name="Valor" required/>
+                </div>
+                <div class="form-group">
+                    <input type="date" placeholder="Data de Entrega" class="form-control" name="DataEntrega" required/>
+                </div>
+                <div class="form-check col-md-12 text-start">
+                    <input type="checkbox" class="form-check-input col-md-2" name="Pago"/>
+                    <label class="form-check-label text-secondary col-md-10" for="Pago"><p>Pago na hora</p></label>
+                </div>
+                <input type="submit" class="btn btn-light text-white my-2" style="background-color: #f06eaa;" value="Enviar" />
+            </form>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+            <h1 class="text-center my-4" style="color: #f06eaa"><b>PRODUTO</b></h1>
+            <form asp-action="Cadastrar" method="POST">
+                <div class="form-group">                
+                    <select name="Categoria" class="form-control" value="Categoria" required>
+                        <option value="@Produto.AVIAMENTO">Aviamento</option>
+                        <option value="@Produto.TECIDO">Tecido</option>
+                    </select>
+                </div> 
+                <div class="form-group">
+                    <input type="text" placeholder="Nome" class="form-control" name="Nome" required/>
+                </div>
+                 
+                <div class="form-group">
+                    <input type="text" placeholder="Descrição" class="form-control" name="Descricao"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Tamanho" class="form-control" name="Tamanho"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Valor" class="form-control" name="Valor" required/>
+                </div>
+                <div class="form-group">
+                    <input type="number" placeholder="Quantidade" class="form-control" name="Quantidade" required/>
+                </div>
+                <input type="submit" class="btn btn-light text-white mb-3" style="background-color: #f06eaa;" value="Enviar" />
+            </form>
+            </div>
+        </div>
+    </div>
+</main>

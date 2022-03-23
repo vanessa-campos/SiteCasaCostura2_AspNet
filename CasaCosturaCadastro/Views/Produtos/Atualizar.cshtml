@@ -1,0 +1,50 @@
+@model Costura
+@{
+    ViewData["Title"] = "Edição Costura";
+}
+
+<div class="row">    
+    <div class="col p-5 justify-content-center">
+        <h1 class="text-center my-2" style="color: #f06eaa"><b>EDIÇÃO DE SERVIÇO DE COSTURA</b></h1>
+        <div class="row justify-content-md-center text-secondary pt-5 pb-3">
+            <form asp-action="Atualizar" method="POST" class="col-md-4">                
+                <input type="hidden" asp-for="Id" />
+                <fieldset>
+                    <div class="form-group">
+                        <label asp-for="Resumo">Resumo: </label>
+                        <input asp-for="Resumo" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Cliente">Nome do Cliente: </label>
+                        <input asp-for="Cliente" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Telefone">Telefone: </label>
+                        <input asp-for="Telefone" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Descricao">Descrição do Serviço: </label>
+                        <input asp-for="Descricao" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Valor">Valor (R$): </label>
+                        <input asp-for="Valor" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DataEntrega">Data de Entrega: </label>
+                        <input type="date" asp-for="DataEntrega" class="form-control"/>
+                    </div>  
+                    <div class="form-check-inline text-start">
+                        <input type="checkbox" asp-for="Pago" class="form-check-input"/>
+                        <label class="form-check-label text-secondary" asp-for="Pago"><p>Pago na hora</p></label>
+                    </div>
+                    <div class="form-check-inline col-md-12 text-start">
+                        <input type="checkbox" asp-for="Entregue" class="form-check-input"/>
+                        <label class="form-check-label text-secondary" asp-for="Entregue"><p>Entregue</p></label>
+                    </div>
+                    </fieldset>
+                    <input type="submit" value="Salvar" class="btn btn-light text-white my-2" style="background-color: #f06eaa;"/>
+            </form>
+        </div>
+    </div>
+</div>
